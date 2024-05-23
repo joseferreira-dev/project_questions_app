@@ -1,16 +1,42 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const QuestionsApp());
+  runApp(QuestionsApp());
 }
 
 class QuestionsApp extends StatelessWidget {
-  const QuestionsApp({super.key});
+  QuestionsApp({super.key});
+
+  final List<String> questions = [
+    'What is your favorite color?',
+    'What is your favorite animal?',
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Text('Flutter Demo Home Page'),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Questions'),
+        ),
+        body: Column(
+          children: [
+            Text(questions[0]),
+            const ElevatedButton(
+              onPressed: null,
+              child: Text('Answer 1'),
+            ),
+            const ElevatedButton(
+              onPressed: null,
+              child: Text('Answer 2'),
+            ),
+            const ElevatedButton(
+              onPressed: null,
+              child: Text('Answer 3'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
