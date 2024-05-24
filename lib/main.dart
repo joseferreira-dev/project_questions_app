@@ -18,40 +18,41 @@ class QuestionsApp extends StatefulWidget {
 class _QuestionsAppState extends State<QuestionsApp> {
   int _selectedQuestion = 0;
 
+  final List<Map<String, Object>> _questions = const [
+    {
+      'text': 'What is your favorite color?',
+      'answers': [
+        'Answer 1.1',
+        'Answer 1.2',
+        'Answer 1.3',
+        'Answer 1.4',
+      ],
+    },
+    {
+      'text': 'What is your favorite animal?',
+      'answers': [
+        'Answer 2.1',
+        'Answer 2.2',
+        'Answer 2.3',
+        'Answer 2.4',
+      ],
+    },
+    {
+      'text': 'What is your favorite coach?',
+      'answers': [
+        'Answer 3.1',
+        'Answer 3.2',
+        'Answer 3.3',
+        'Answer 3.4',
+      ],
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, Object>> questions = [
-      {
-        'text': 'What is your favorite color?',
-        'answers': [
-          'Answer 1.1',
-          'Answer 1.2',
-          'Answer 1.3',
-          'Answer 1.4',
-        ],
-      },
-      {
-        'text': 'What is your favorite animal?',
-        'answers': [
-          'Answer 2.1',
-          'Answer 2.2',
-          'Answer 2.3',
-          'Answer 2.4',
-        ],
-      },
-      {
-        'text': 'What is your favorite coach?',
-        'answers': [
-          'Answer 3.1',
-          'Answer 3.2',
-          'Answer 3.3',
-          'Answer 3.4',
-        ],
-      },
-    ];
 
-    List<String> answersList = questions[_selectedQuestion]['answers'] as List<String>;
-    
+    List<String> answersList = _questions[_selectedQuestion]['answers'] as List<String>;
+
     List<Widget> answersWidgets = answersList
       .map((text) => Answer(text, _answer))
       .toList();
@@ -74,11 +75,18 @@ class _QuestionsAppState extends State<QuestionsApp> {
           ),
           backgroundColor: Colors.blue,
         ),
-        body: Column(
+        body: hasSelectedQuestion
+        ? Column(
           children: [
-            Question(questions[_selectedQuestion]['text'] as String),
+            Question(_questions[_selectedQuestion]['text'] as String),
             ...answersWidgets,
           ],
+        )
+        : const Center(
+          child: Text(
+            'Parabéns!',
+            style: TextStyle(fontSize: 24),
+          )
         ),
       ),
     );
@@ -86,11 +94,13 @@ class _QuestionsAppState extends State<QuestionsApp> {
 
   void _answer() {
     setState(() {
-      if (_selectedQuestion < 2) {
+      if (hasSelectedQuestion) {
         _selectedQuestion++;
-      } else {
-        _selectedQuestion = 0;
       }
     });
+  }
+
+  bool get hasSelectedQuestion {
+    return _selectedQuestion < _questions.length - 1;
   }
 }
