@@ -51,10 +51,6 @@ class _QuestionsAppState extends State<QuestionsApp> {
   @override
   Widget build(BuildContext context) {
 
-    var answersList = hasSelectedQuestion
-    ? _questions[_selectedQuestion]['answers'] as List<String>
-    : null;
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -75,8 +71,8 @@ class _QuestionsAppState extends State<QuestionsApp> {
         ),
         body: hasSelectedQuestion
         ? Quiz(
-          _questions[_selectedQuestion]['text'] as String,
-          answersList!,
+          _questions,
+          _selectedQuestion,
           _answer,
         )
         : const Result('Parabéns!'),
