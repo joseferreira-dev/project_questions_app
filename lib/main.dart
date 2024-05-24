@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import './question.dart';
-import './answer.dart';
 import './result.dart';
+import './quiz.dart';
 
 void main() {
   runApp(const QuestionsApp());
@@ -75,11 +74,10 @@ class _QuestionsAppState extends State<QuestionsApp> {
           backgroundColor: Colors.blue,
         ),
         body: hasSelectedQuestion
-        ? Column(
-          children: [
-            Question(_questions[_selectedQuestion]['text'] as String),
-            ...?answersList?.map((text) => Answer(text, _answer)),
-          ],
+        ? Quiz(
+          _questions[_selectedQuestion]['text'] as String,
+          answersList!,
+          _answer,
         )
         : const Result('Parabéns!'),
       ),
