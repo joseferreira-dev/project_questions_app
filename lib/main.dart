@@ -20,10 +20,41 @@ class _QuestionsAppState extends State<QuestionsApp> {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> questions = [
-      'What is your favorite color?',
-      'What is your favorite animal?',
+    final List<Map<String, Object>> questions = [
+      {
+        'text': 'What is your favorite color?',
+        'answers': [
+          'Answer 1.1',
+          'Answer 1.2',
+          'Answer 1.3',
+          'Answer 1.4',
+        ],
+      },
+      {
+        'text': 'What is your favorite animal?',
+        'answers': [
+          'Answer 2.1',
+          'Answer 2.2',
+          'Answer 2.3',
+          'Answer 2.4',
+        ],
+      },
+      {
+        'text': 'What is your favorite coach?',
+        'answers': [
+          'Answer 3.1',
+          'Answer 3.2',
+          'Answer 3.3',
+          'Answer 3.4',
+        ],
+      },
     ];
+
+    List<Widget> answersList = [];
+
+    for (var answer in questions[_selectedQuestion]['answers'] as List) {
+      answersList.add(Answer(answer, _answer));
+    }
 
     return MaterialApp(
       home: Scaffold(
@@ -34,6 +65,7 @@ class _QuestionsAppState extends State<QuestionsApp> {
             child: const Text(
               'Questions',
               style: TextStyle(
+                color: Colors.white,
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
@@ -44,10 +76,8 @@ class _QuestionsAppState extends State<QuestionsApp> {
         ),
         body: Column(
           children: [
-            Question(questions[_selectedQuestion]),
-            Answer('Answer 1', _answer),
-            Answer('Answer 2', _answer),
-            Answer('Answer 3', _answer),
+            Question(questions[_selectedQuestion]['text'] as String),
+            ...answersList,
           ],
         ),
       ),

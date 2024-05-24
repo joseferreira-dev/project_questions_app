@@ -10,14 +10,14 @@ class Answer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+      margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
       child: ElevatedButton(
         onPressed: onSelected,
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,
           backgroundColor: Colors.blue,
-          padding: EdgeInsets.all(10),
-          textStyle: TextStyle(fontSize: 16),
+          padding: const EdgeInsets.all(10),
+          textStyle: const TextStyle(fontSize: 16),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
