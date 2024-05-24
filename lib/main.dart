@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(QuestionsApp());
+  runApp(const QuestionsApp());
 }
 
-class QuestionsAppState extends State<QuestionsApp> {
-  int selectedQuestion = 0;
+class QuestionsApp extends StatefulWidget {
+  const QuestionsApp({super.key});
+  
+  @override
+  _QuestionsAppState createState() {
+    return _QuestionsAppState();
+  }
+}
+
+class _QuestionsAppState extends State<QuestionsApp> {
+  int _selectedQuestion = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -22,18 +31,18 @@ class QuestionsAppState extends State<QuestionsApp> {
         ),
         body: Column(
           children: [
-            Text(questions[selectedQuestion]),
+            Text(questions[_selectedQuestion]),
             ElevatedButton(
-              onPressed: answer,
-              child: Text('Answer 1'),
+              onPressed: _answer,
+              child: const Text('Answer 1'),
             ),
             ElevatedButton(
-              onPressed: answer,
-              child: Text('Answer 2'),
+              onPressed: _answer,
+              child: const Text('Answer 2'),
             ),
             ElevatedButton(
-              onPressed: answer,
-              child: Text('Answer 3'),
+              onPressed: _answer,
+              child: const Text('Answer 3'),
             ),
           ],
         ),
@@ -41,20 +50,11 @@ class QuestionsAppState extends State<QuestionsApp> {
     );
   }
     
-  void answer() {
+  void _answer() {
     setState(() {
-      selectedQuestion++;
+      _selectedQuestion++;
     });
-    print(selectedQuestion);
+    print(_selectedQuestion);
   }
 
-}
-
-class QuestionsApp extends StatefulWidget {
-  const QuestionsApp({super.key});
-  
-  @override
-  QuestionsAppState createState() {
-    return QuestionsAppState();
-  }
 }
