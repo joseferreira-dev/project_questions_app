@@ -17,6 +17,7 @@ class QuestionsApp extends StatefulWidget {
 
 class _QuestionsAppState extends State<QuestionsApp> {
   int _selectedQuestion = 0;
+  int _totalPoints = 0;
 
   final List<Map<String, Object>> _questions = const [
     {
@@ -80,10 +81,11 @@ class _QuestionsAppState extends State<QuestionsApp> {
     );
   }
 
-  void _answer() {
+  void _answer(int point) {
     setState(() {
       if (hasSelectedQuestion) {
         _selectedQuestion++;
+        _totalPoints+= point;
       }
     });
   }
