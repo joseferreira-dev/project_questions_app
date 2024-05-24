@@ -22,22 +22,26 @@ class QuestionsApp extends StatelessWidget {
         body: Column(
           children: [
             Text(questions[0]),
-            const ElevatedButton(
-              onPressed: null,
+            ElevatedButton(
+              onPressed: answer,
               child: Text('Answer 1'),
             ),
-            const ElevatedButton(
-              onPressed: null,
+            ElevatedButton(
+              onPressed: answer,
               child: Text('Answer 2'),
             ),
-            const ElevatedButton(
-              onPressed: null,
+            ElevatedButton(
+              onPressed: answer,
               child: Text('Answer 3'),
             ),
           ],
         ),
       ),
     );
+  }
+
+  void answer() {
+    print('Question answered!');
   }
 }
 
