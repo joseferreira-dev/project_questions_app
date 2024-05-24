@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './question.dart';
 import './answer.dart';
+import './result.dart';
 
 void main() {
   runApp(const QuestionsApp());
@@ -51,11 +52,9 @@ class _QuestionsAppState extends State<QuestionsApp> {
   @override
   Widget build(BuildContext context) {
 
-    List<String> answersList = _questions[_selectedQuestion]['answers'] as List<String>;
-
-    List<Widget> answersWidgets = answersList
-      .map((text) => Answer(text, _answer))
-      .toList();
+    var answersList = hasSelectedQuestion
+    ? _questions[_selectedQuestion]['answers'] as List<String>
+    : null;
 
     return MaterialApp(
       home: Scaffold(
@@ -79,15 +78,10 @@ class _QuestionsAppState extends State<QuestionsApp> {
         ? Column(
           children: [
             Question(_questions[_selectedQuestion]['text'] as String),
-            ...answersWidgets,
+            ...?answersList?.map((text) => Answer(text, _answer)),
           ],
         )
-        : const Center(
-          child: Text(
-            'Parabéns!',
-            style: TextStyle(fontSize: 24),
-          )
-        ),
+        : const Result('Parabéns!'),
       ),
     );
   }
@@ -101,6 +95,6 @@ class _QuestionsAppState extends State<QuestionsApp> {
   }
 
   bool get hasSelectedQuestion {
-    return _selectedQuestion < _questions.length - 1;
+    return _selectedQuestion < _questions.length;
   }
 }
