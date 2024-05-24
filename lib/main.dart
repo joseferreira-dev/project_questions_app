@@ -76,7 +76,7 @@ class _QuestionsAppState extends State<QuestionsApp> {
           _selectedQuestion,
           _answer,
         )
-        : const Result('Parabéns!'),
+        : Result('Questionário concluído!', _totalPoints, _restartQuizz),
       ),
     );
   }
@@ -87,6 +87,13 @@ class _QuestionsAppState extends State<QuestionsApp> {
         _selectedQuestion++;
         _totalPoints+= point;
       }
+    });
+  }
+
+  void _restartQuizz() {
+    setState(() {
+      _selectedQuestion = 0;
+      _totalPoints = 0;
     });
   }
 
