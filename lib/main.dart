@@ -40,14 +40,14 @@ class _QuestionsAppState extends State<QuestionsApp> {
               textAlign: TextAlign.center,
             ),
           ),
-          backgroundColor: const Color.fromARGB(255, 110, 162, 241),
+          backgroundColor: Colors.blue,
         ),
         body: Column(
           children: [
             Question(questions[_selectedQuestion]),
-            const Answer('Answer 1'),
-            const Answer('Answer 2'),
-            const Answer('Answer 3'),
+            Answer('Answer 1', _answer),
+            Answer('Answer 2', _answer),
+            Answer('Answer 3', _answer),
           ],
         ),
       ),
@@ -58,6 +58,5 @@ class _QuestionsAppState extends State<QuestionsApp> {
     setState(() {
       _selectedQuestion++;
     });
-    print(_selectedQuestion);
   }
 }
