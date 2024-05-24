@@ -22,28 +22,28 @@ class _QuestionsAppState extends State<QuestionsApp> {
     {
       'text': 'What is your favorite color?',
       'answers': [
-        'Answer 1.1',
-        'Answer 1.2',
-        'Answer 1.3',
-        'Answer 1.4',
+        { 'answer': 'Sucess', 'point': 1 },
+        { 'answer': 'Fail', 'point': 0 },
+        { 'answer': 'Fail', 'point': 0 },
+        { 'answer': 'Fail', 'point': 0 },
       ],
     },
     {
       'text': 'What is your favorite animal?',
       'answers': [
-        'Answer 2.1',
-        'Answer 2.2',
-        'Answer 2.3',
-        'Answer 2.4',
+        { 'answer': 'Fail', 'point': 0 },
+        { 'answer': 'Sucess', 'point': 1 },
+        { 'answer': 'Fail', 'point': 0 },
+        { 'answer': 'Fail', 'point': 0 },
       ],
     },
     {
       'text': 'What is your favorite coach?',
       'answers': [
-        'Answer 3.1',
-        'Answer 3.2',
-        'Answer 3.3',
-        'Answer 3.4',
+        { 'answer': 'Fail', 'point': 0 },
+        { 'answer': 'Fail', 'point': 0 },
+        { 'answer': 'Sucess', 'point': 1 },
+        { 'answer': 'Fail', 'point': 0 },
       ],
     },
   ];
