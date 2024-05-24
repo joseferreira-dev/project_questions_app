@@ -7,7 +7,7 @@ void main() {
 
 class QuestionsApp extends StatefulWidget {
   const QuestionsApp({super.key});
-  
+
   @override
   _QuestionsAppState createState() {
     return _QuestionsAppState();
@@ -19,7 +19,6 @@ class _QuestionsAppState extends State<QuestionsApp> {
 
   @override
   Widget build(BuildContext context) {
-
     final List<String> questions = [
       'What is your favorite color?',
       'What is your favorite animal?',
@@ -28,7 +27,15 @@ class _QuestionsAppState extends State<QuestionsApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Questions'),
+          title: Container(
+            width: double.infinity,
+            margin: EdgeInsets.all(10),
+            child: const Text(
+              'Questions',
+              textAlign: TextAlign.center,
+            ),
+          ),
+          backgroundColor: const Color.fromARGB(255, 110, 162, 241),
         ),
         body: Column(
           children: [
@@ -50,12 +57,11 @@ class _QuestionsAppState extends State<QuestionsApp> {
       ),
     );
   }
-    
+
   void _answer() {
     setState(() {
       _selectedQuestion++;
     });
     print(_selectedQuestion);
   }
-
 }
